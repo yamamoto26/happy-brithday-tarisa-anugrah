@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selamat Ulang Tahun! 🎉</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Georgia", serif;
+        background: linear-gradient(
+          45deg,
+          #ff6b6b,
+          #4ecdc4,
+          #45b7d1,
+          #96ceb4,
+          #ffd93d
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 8s ease infinite;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .container {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+        padding: 40px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        max-width: 500px;
+        margin: 20px;
+        animation: containerFloat 6s ease-in-out infinite;
+      }
+
+      @keyframes containerFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .photo-frame {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        animation: photoGlow 3s ease-in-out infinite alternate;
+        position: relative;
+      }
+
+      @keyframes photoGlow {
+        0% {
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        100% {
+          box-shadow: 0 15px 35px rgba(255, 255, 255, 0.4),
+            0 0 30px rgba(255, 255, 255, 0.3);
+        }
+      }
+
+      .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .photo-frame:hover img {
+        transform: scale(1.1);
+      }
+
+      h1 {
+        font-size: 3em;
+        color: white;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        margin-bottom: 20px;
+        animation: titleBounce 2s ease-in-out infinite;
+      }
+
+      @keyframes titleBounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .message {
+        font-size: 1.3em;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 30px;
+        line-height: 1.6;
+        animation: messageSlide 1s ease-out 0.5s both;
+      }
+
+      @keyframes messageSlide {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .emoji-rain {
+        position: fixed;
+        top: -50px;
+        font-size: 2em;
+        animation: fall 4s linear infinite;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      .candle {
+        position: relative;
+        display: inline-block;
+        margin: 0 5px;
+        animation: candleFlicker 1.5s ease-in-out infinite alternate;
+      }
+
+      @keyframes candleFlicker {
+        0% {
+          text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
+        }
+        100% {
+          text-shadow: 0 0 15px #ff6b47, 0 0 20px #ff6b47;
+        }
+      }
+
+      .birthday-cake {
+        font-size: 4em;
+        margin: 20px 0;
+        animation: cakeRotate 8s linear infinite;
+      }
+
+      @keyframes cakeRotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .music-control {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        color: white;
+        font-size: 1.5em;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .music-control:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      .star {
+        position: fixed;
+        color: #ffd700;
+        font-size: 20px;
+        animation: twinkle 2s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.2);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 30px 20px;
+          margin: 10px;
+        }
+
+        h1 {
+          font-size: 2.2em;
+        }
+
+        .message {
+          font-size: 1.1em;
+        }
+
+        .photo-frame {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="photo-frame">
+        <img src="1.jpg" alt="Birthday Person" id="birthdayPhoto" />
+      </div>
+
+      <h1>🎉 Selamat Ulang Tahun! 🎉</h1>
+
+      <div class="message">
+        <p>Semoga hari istimewa ini membawa kebahagiaan yang tak terbatas!</p>
+        <p>
+          <i
+            >Semoga semua impian dan harapan terwujud di usia yang sekarang
+            ini,<br />
+            jangan pernah kecewakan semua orang yang percaya ke kamu!</i
+          >
+        </p>
+      </div>
+
+      <div class="birthday-cake">🎂</div>
+
+      <div class="candle">🕯️</div>
+      <div class="candle">🕯️</div>
+      <div class="candle">🕯️</div>
+    </div>
+
+    <!-- Audio untuk musik latar -->
+    <audio id="birthdayMusic" loop>
+      <source src="musik.mp3" type="audio/mpeg" />
+      <!-- Anda bisa mengganti dengan URL musik birthday song yang diinginkan -->
+    </audio>
+
+    <button class="music-control" id="musicToggle">🎵</button>
+
+    <script>
+      // Auto play music ketika halaman dimuat
+      window.addEventListener("DOMContentLoaded", function () {
+        const music = document.getElementById("birthdayMusic");
+        const musicToggle = document.getElementById("musicToggle");
+
+        // Coba auto play musik
+        music
+          .play()
+          .then(() => {
+            musicToggle.textContent = "🔊";
+          })
+          .catch(() => {
+            // Jika auto play gagal karena browser policy
+            musicToggle.textContent = "🔇";
+            console.log(
+              "Auto play diblokir browser. Klik tombol musik untuk memutar."
+            );
+          });
+      });
+
+      // Toggle musik
+      document
+        .getElementById("musicToggle")
+        .addEventListener("click", function () {
+          const music = document.getElementById("birthdayMusic");
+
+          if (music.paused) {
+            music.play();
+            this.textContent = "🔊";
+          } else {
+            music.pause();
+            this.textContent = "🔇";
+          }
+        });
+
+      // Efek hujan emoji
+      function createEmojiRain() {
+        const emojis = ["🎉", "🎊", "🎈", "🎂", "🎁", "✨", "🌟", "💖", "🎵"];
+        const emoji = document.createElement("div");
+        emoji.className = "emoji-rain";
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + "vw";
+        emoji.style.animationDuration = Math.random() * 3 + 2 + "s";
+        emoji.style.opacity = Math.random();
+
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+          emoji.remove();
+        }, 5000);
+      }
+
+      // Buat hujan emoji setiap 300ms
+      setInterval(createEmojiRain, 300);
+
+      // Efek bintang berkedip
+      function createTwinklingStar() {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.textContent = "⭐";
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.top = Math.random() * 100 + "vh";
+        star.style.animationDelay = Math.random() * 2 + "s";
+
+        document.body.appendChild(star);
+
+        setTimeout(() => {
+          star.remove();
+        }, 4000);
+      }
+
+      // Buat bintang berkedip setiap 800ms
+      setInterval(createTwinklingStar, 800);
+
+      // Efek klik pada foto
+      document
+        .getElementById("birthdayPhoto")
+        .addEventListener("click", function () {
+          // Buat efek ledakan emoji
+          for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+              createEmojiRain();
+            }, i * 100);
+          }
+        });
+
+      // Efek konfetti saat halaman dimuat
+      window.addEventListener("load", function () {
+        for (let i = 0; i < 20; i++) {
+          setTimeout(createEmojiRain, i * 100);
+        }
+      });
+    </script>
+  </body>
+</html>
